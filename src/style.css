@@ -32,6 +32,47 @@ nav {
     align-self: center;
 }
 
+.card-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+}
+
 .card {
     padding-left:40px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-img {
+    width: 200px;
+    height: 300px;
+    border-radius: 9px;
+    margin-bottom: 9px;
+}
+
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+}
+
+.card-star {
+    height: 14px;
+}
+
+.card-price {
+    margin-top: auto;
+}
+
+.card-batch {
+    position: absolute;
 }

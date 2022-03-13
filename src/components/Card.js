@@ -1,23 +1,39 @@
 import '../style.css'
-// import one from '../images/one.png'
-import star from '../images/star.png'
 
 export default function Card(props) {
+
+    // const pokemon = ["Bulbasaur", "Charmander", "Squirtle"]
+    // const result = pokemon.map(pok => `<p> ${pok} </p>`)
+    // console.log(result);
+
+    let flag
+    let soldOut
+    if (props.openSpots === 0) {
+        soldOut = true
+    } else if (props.location === "Online") {
+        flag = 2
+    }
+
     return (
         <div className="card">
-            <img className="card-img" src = { require(`../images/${props.img}`) } alt="One" />
+
+            { soldOut && <div className="card-batch"> <img src = {require('../images/sold.png')} alt="sold out" /> </div> }
+            
+            {flag === 2 && <div className="card-batch"> <img src={require('../images/online.png')} alt="online" /> </div>}
+            
+            <img className="card-img" src={require(`../images/${props.coverImg}`)} alt="One" />
 
             <div className="card-info">
-                <img src = {star} alt="Star" />
+                <img src = {require('../images/star.png')} alt="Star" className="card-star" />
                 
-                <span> {props.rating} </span>
-                <span className="grey"> ({props.reviewCount}) </span>
-                <span className="grey"> •{props.country} </span>
+                <span> {props.stats.rating} </span>
+                <span className="grey"> ({props.stats.reviewCount}) </span>
+                <span className="grey"> •{props.location} </span>
             </div>
 
-            <p> { props.title } </p>
+            <p className = "card-title"> { props.title } </p>
 
-            <p> <b> From ${props.price}</b> / person </p>
+            <p className = "card-price"> <b> From ${props.price}</b> / person </p>
         </div>
     )
 }

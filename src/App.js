@@ -1,40 +1,38 @@
 import Navbar from './components/Navbar'
 import Main from './components/Main'
 import Card from './components/Card'
-// import Contact from './components/Contact'
-// import car from './images/car.jpg'
+import data from './Data/data'
 
+
+// What do we usually use `.map()` for in React?
+// Convert an array of raw data into an array of JSX elements
+// that can be displayed on the page.
 
 function App() {
+
+	const cardElements = data.map(card => {
+		return <Card
+					key = {card.id}
+					// card={card}
+					{...card}
+
+					// img={card.coverImg}
+					// rating={card.stats.rating}
+					// reviewCount={card.stats.reviewCount}
+					// title={card.title}
+					// price = {card.price}
+					// location = {card.location}
+					// openSpots = {card.openSpots}
+				/>
+	})
+
     return (
 		<div>
 			<Navbar/>
 			<Main/>
-			<Card
-				img = "one.png"
-				rating = {4}
-				reviewCount = {10}
-				country = "India"
-				title = "Life lessons with Katie Zaferes"
-				price = {130}
-			/>
-
-			{/* <Contact 
-				image = {car}
-				name = "Creta"
-				phone = {456}
-				mail = "hoiehs@jf"
-				isValid = {true}
-			/>
-
-			<Contact 
-				image = {car}
-				name = "I20"
-				phone = {1234}
-				mail = "nkjbawb@jf"
-				isValid = {false}
-			/> */}
-
+			<section className="card-list">
+				{ cardElements }
+			</section>
 		</div>
     );
 }
